@@ -1,21 +1,19 @@
 "use client";
 
-import { usePost } from "./query/get";
+import { FormProvider } from "./contexts/FormContext";
+import { MultiStepForm } from "./components/MultiStepForm";
 
 export default function Home() {
-  const { mutate } = usePost();
-
-  const handleClick = () => {
-    mutate({
-      title: "새로운 게시물",
-      body: "게시물 내용입니다.",
-      userId: 1,
-    });
-  };
-
   return (
-    <div>
-      <button onClick={handleClick}>클릭</button>
-    </div>
+    <main className="min-h-screen bg-gray-100">
+      <FormProvider>
+        <div className="container mx-auto py-8">
+          <h1 className="text-3xl font-bold mb-6 text-center">
+            리액트 훅폼 예제
+          </h1>
+          <MultiStepForm />
+        </div>
+      </FormProvider>
+    </main>
   );
 }
