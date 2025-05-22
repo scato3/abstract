@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 프로젝트 개요
 
-## Getting Started
+이 프로젝트는 코드 추상화의 개념을 실제로 적용하고 연습하기 위해 설계되었습니다. 다양한 계층을 통해 관심사를 분리하고, 유지보수가 용이한 코드 구조를 만드는 것에 중점을 두고 있습니다.
 
-First, run the development server:
+## 주요 기능
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **계층화된 구조**: 애플리케이션이 UI, 쿼리 관리, 서비스 로직, API 통신 등의 계층으로 명확하게 분리되어 있습니다.
+- **추상화된 데이터 접근**: 데이터 접근 계층이 추상화되어 있어 구현 변경이 용이합니다.
+- **재사용 가능한 컴포넌트**: UI 컴포넌트가 비즈니스 로직과 분리되어 재사용성이 향상됩니다.
+
+## 프로젝트 구조
+
+```
+src/
+├── app/
+│   ├── components/ - UI 컴포넌트 (Compound Pattern 적용)
+│   │   ├── DataTable/ - 테이블 추상화 컴포넌트
+│   ├── providers/ - 컴포넌트 상태관리 추상화
+│   │   └── modal-provider.tsx - 모달 컨텍스트 제공
+│   ├── query/      - TanStack Query 활용한 데이터 쿼리 관리
+│   ├── service/    - 비즈니스 로직 서비스
+│   ├── lib/        - 유틸리티 및 설정
+│   ├── api/        - API 라우트
+│   └── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 사용된 추상화 패턴
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Service Layer**: API 호출을 추상화하여 비즈니스 로직과 데이터 접근을 분리합니다.
+2. **Query Layer**: TanStack Query를 사용하여 서버 상태 관리를 추상화합니다.
+3. **API Client**: axios를 사용한 HTTP 클라이언트 추상화로 서버 통신을 단순화합니다.
+4. **Compound Pattern**: UI 컴포넌트를 구성 요소로 분리하여 유연하고 재사용 가능한 컴포넌트 구조를 제공합니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 기술 스택
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js
+- TypeScript
+- TanStack Query
+- Axios
